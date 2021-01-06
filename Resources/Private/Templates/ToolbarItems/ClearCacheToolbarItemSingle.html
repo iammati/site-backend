@@ -1,0 +1,68 @@
+<html xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers" data-namespace-typo3-fluid="true">
+	<a 
+		href="{link}"
+		class="toolbar-cache-flush-action toolbar-item-link"
+		title="{f:translate(key: title, default: title)}"
+		id="cacheflushcustom"
+	>
+		<f:render partial="ToolbarItem" arguments="{title: title, icon: '{core:icon(identifier: iconIdentifier, size: \'small\')}'}" />
+
+		<div id="customspinnercircle">
+			<core:icon identifier="spinner-circle" size="small" />
+		</div>
+	</a>
+
+	<style>
+		#cacheflushcustom.flushing .toolbar-item-icon {
+			display: none;
+		}
+
+		#cacheflushcustom.flushing #customspinnercircle {
+			display: block;
+		}
+
+		#cacheflushcustom .toolbar-item-icon {
+			color: #c83c3c;
+		}
+
+		#customspinnercircle {
+			display: none;
+		}
+	</style>
+
+	<script>
+		window.onload = function() {
+			$('#cacheflushcustom').on('click', this, function(e) {
+				e.preventDefault();
+				e.stopImmediatePropagation();
+				e.stopPropagation();
+
+				var $this = $(this);
+				$this.addClass('flushing');
+
+				$span = $(this).find('span');
+				$span.addClass('icon-spin');
+
+				$img = $(this).find('.icon-markup img');
+				$img.attr('src', '/typo3/sysext/core/Resources/Public/Icons/T3Icons/sprites/spinner.svg#spinner-circle-light');
+
+				$.ajax({
+					url: $(this).attr('href'),
+
+					complete: function(response) {
+						$img.attr('src', '/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-system-cache-clear-impact-high.svg');
+						$span.removeClass('icon-spin');
+						$this.removeClass('flushing');
+					}
+				});
+
+				var iframe = document.getElementById('typo3-contentIframe');
+					iframe.src = iframe.src;
+
+				console.clear();
+
+				return false;
+			});
+		};
+	</script>
+</html>

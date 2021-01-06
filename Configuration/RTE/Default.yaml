@@ -1,0 +1,74 @@
+# Load default processing options
+imports:
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  config:
+    # contentsCss:
+    #   - "EXT:site_backend/Resources/Public/css/rte.css"
+
+    # can be "default", but a custom stylesSet can be defined here, which fits TYPO3 best
+    stylesSet:
+      # block level styles
+      # - { name: "Orange title H2", element: "h2", styles: { color: "orange", background: "blue" } }
+      # - { name: "Orange title H3", element: "h3", styles: { color: "orange", background: "blue" } }
+      - { name: "Code block", element: "code" }
+
+    format_tags: "p;h1;h2;h3;h4;h5;h6;pre"
+
+    toolbarGroups:
+      - { name: clipboard, groups: [clipboard, undo] }
+      - { name: editing,   groups: [find, selection, spellchecker] }
+      - { name: links }
+      - { name: insert }
+      - { name: tools }
+      - { name: table }
+      - { name: tabletools }
+      - { name: document,  groups: [ mode, document, doctools ] }
+      - { name: others }
+      - "/"
+      - { name: basicstyles, groups: [ basicstyles, align, cleanup ] }
+      - { name: paragraph,   groups: [ list, indent, blocks, align, bidi ] }
+      - { name: specialcharacters,   groups: [ insertcharacters ] }
+      - "/"
+      - { name: styles }
+      - { name: colors }
+
+    justifyClasses:
+      - text-left
+      - text-center
+      - text-right
+      - text-justify
+
+    fontSize_sizes: "8/8px;9/9px;10/10px;11/11px;12/12px;14/14px;16/16px;18/18px;20/20px;22/22px;24/24px;26/26px;27/27px;28/28px;36/36px;48/48px;55/55px;60/60px;72/72px"
+    colorButton_colors: "1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F,16A085,27AE60,2980B9,8E44AD,2C3E50,F39C12,E67E22,E74C3C,ECF0F1,95A5A6,DDD,FFF,D35400,C0392B,BDC3C7,7F8C8D,999,000,9b2322"
+
+    extraPlugins:
+      - justify
+      - font
+      - find
+      - bidi
+      - selectall
+      - autolink
+      - wordcount
+      - image
+      - colorbutton
+
+    # removePlugins:
+      # - image
+
+    # removeButtons:
+
+# Allow s and u tag
+processing:
+  allowTags:
+    - s
+    - u
+    - button
+    - span
+    - ul
+    - li

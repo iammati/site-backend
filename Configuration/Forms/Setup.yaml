@@ -1,0 +1,17 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  100: 'EXT:site_frontend/Resources/Private/Fluid/Extensions/Forms/Frontend/Templates/'
+                  200: 'EXT:site_backend/Resources/Private/Extensions/Forms/Backend/Templates/'
+                partialRootPaths:
+                  100: 'EXT:site_frontend/Resources/Private/Fluid/Partials/'
+                  200: 'EXT:site_frontend/Resources/Private/Fluid/Extensions/Forms/Frontend/Partials/'
+                  300: 'EXT:site_backend/Resources/Private/Extensions/Forms/Backend/Partials/'
+                layoutRootPaths:
+                  100: 'EXT:site_backend/Resources/Private/Extensions/Forms/Backend/Layouts/'

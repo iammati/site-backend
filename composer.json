@@ -1,0 +1,27 @@
+{
+    "name": "site/site-backend",
+    "type": "typo3-cms-extension",
+    "description": "Backend Extension for a TYPO3 Application.",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Mati",
+            "email": "mati_01@icloud.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^10.4",
+        "site/site-core": "^1.0.0",
+        "b13/container": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Site\\Backend\\": "Classes/"
+        }
+    },
+    "suggest": {
+        "site/site-frontend": "The perfect frontend-extension for the perfect backend-extension."
+    }
+}
