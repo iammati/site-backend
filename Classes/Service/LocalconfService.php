@@ -39,7 +39,7 @@ class LocalconfService
         $this->backendExtKey = getenv('BACKEND_EXT');
 
         if ($this->backendExtKey !== false) {
-            $this->authBackend();
+            // $this->authBackend();
             $this->rteRegistration();
             $this->iconRegistration();
 

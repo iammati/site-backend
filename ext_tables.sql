@@ -12,7 +12,7 @@ CREATE TABLE pages (
 #
 CREATE TABLE tt_content (
     -- TCA for container related fields --
-    containerIsFluid tinyint(1) DEFAULT '0' NOT NULL,
+    containerIsFluid tinyint(2) DEFAULT 0 NOT NULL,
     containerSpaceBefore varchar(60) DEFAULT '' NOT NULL,
 	containerSpaceAfter varchar(60) DEFAULT '' NOT NULL,
 
