@@ -16,7 +16,7 @@ class Backend
     /**
      * @var string
      */
-    protected static $version = '1.0.0';
+    protected static $version = '1.0.1';
 
     /**
      * @var string
