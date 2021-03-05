@@ -24,5 +24,10 @@
     },
     "suggest": {
         "site/site-frontend": "The perfect frontend-extension for the perfect backend-extension."
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Site\\Backend\\Composer\\Backend::checkVersion"
+        ]
     }
 }

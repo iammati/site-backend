@@ -36,7 +36,7 @@ class LocalconfService
      */
     public function register()
     {
-        $this->backendExtKey = getenv('BACKEND_EXT');
+        $this->backendExtKey = env('BACKEND_EXT');
 
         if ($this->backendExtKey !== false) {
             $this->authBackend();

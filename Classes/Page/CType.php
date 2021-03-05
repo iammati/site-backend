@@ -32,9 +32,9 @@ class CType
 
         $this->cObj->renderedView = StandaloneViewUtility::render(
             [
-                'Templates' => 'EXT:'.getenv('FRONTEND_EXT').'/Resources/Private/Fluid/Content/Templates/',
-                'Partials' => 'EXT:'.getenv('FRONTEND_EXT'). '/Resources/Private/Fluid/Content/Partials/',
-                'Layouts' => 'EXT:'.getenv('FRONTEND_EXT'). '/Resources/Private/Fluid/Content/Layouts/',
+                'Templates' => 'EXT:'.env('FRONTEND_EXT').'/Resources/Private/Fluid/Content/Templates/',
+                'Partials' => 'EXT:'.env('FRONTEND_EXT'). '/Resources/Private/Fluid/Content/Partials/',
+                'Layouts' => 'EXT:'.env('FRONTEND_EXT'). '/Resources/Private/Fluid/Content/Layouts/',
             ],
 
             $templateCType.'.html',

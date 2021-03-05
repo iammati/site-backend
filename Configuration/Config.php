@@ -1,8 +1,10 @@
 <?php
 
 return [
+    'localizationType' => 'custom',
+
     'IRREs' => [
-        'prefix' => 'tx_'.getenv('CUSTOMER_PROJECT').'_',
+        'prefix' => 'tx_'.env('CUSTOMER_PROJECT').'_',
     ],
 
     'Backend' => [

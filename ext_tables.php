@@ -5,7 +5,7 @@ use Site\Core\Service\TCAService;
 defined('TYPO3_MODE') || die('Access denied.');
 
 (function () {
-    $customerProject = getenv('CUSTOMER_PROJECT');
+    $customerProject = env('CUSTOMER_PROJECT');
 
     TCAService::allowTablesStartsWith('tx_'.$customerProject);
 })();

@@ -22,13 +22,13 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 
     'containerSpaceBefore' => Fields\Select::make('Space Before', [
         'config' => [
-            'items' => ConfigHelper::get(getenv('BACKEND_EXT'), 'Fields.Container.spacers'),
+            'items' => ConfigHelper::get(env('BACKEND_EXT'), 'Fields.Container.spacers'),
         ],
     ]),
 
     'containerSpaceAfter' => Fields\Select::make('Space After', [
         'config' => [
-            'items' => ConfigHelper::get(getenv('BACKEND_EXT'), 'Fields.Container.spacers'),
+            'items' => ConfigHelper::get(env('BACKEND_EXT'), 'Fields.Container.spacers'),
         ],
     ]),
 
@@ -43,7 +43,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', [
 
 // Registers automatically all irre_*_item configuration for CTRL-configured IRRE items.
 // Take a look at the method's code to easier understand what it does in detail.
-TCAService::registerIRREs(__DIR__.'/..', ConfigHelper::get(getenv('BACKEND_EXT'), 'IRREs.prefix'));
+TCAService::registerIRREs(__DIR__.'/..', ConfigHelper::get(env('BACKEND_EXT'), 'IRREs.prefix'));
 
 // Loads all in this __DIR__ configured CTypes starting with 'ce_'.
 // For more read the brief-description or the code of this static method.

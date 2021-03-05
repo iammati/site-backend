@@ -55,7 +55,7 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
             }
 
             $identifier = 'Backend.ContentElements:'.str_replace('ce_', '', $record['CType']);
-            $header = ll(getenv('BACKEND_EXT'), $identifier)['title'] ?? $record['header'];
+            $header = ll(env('BACKEND_EXT'), $identifier)['title'] ?? $record['header'];
 
             $outHeader = $record['date'] ? htmlspecialchars($itemLabels['date'].' '.BackendUtility::date($record['date'])).'<br />' : '';
             $outHeader .= '<strong>'.$this->linkEditContent($this->renderText($header), $record).$hiddenHeaderNote.'</strong><br />';
@@ -66,7 +66,7 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
 
     protected function renderContentElementPreviewFromFluidTemplate(array $row): ?string
     {
-        $backendExt = getenv('BACKEND_EXT');
+        $backendExt = env('BACKEND_EXT');
 
         $extKey = ConfigHelper::get($backendExt, 'Backend.Preview.extKey');
         $templateRootPaths = ConfigHelper::get($backendExt, 'Backend.Preview.templateRootPaths');

@@ -184,7 +184,7 @@ class ClearCacheToolbarItem implements ToolbarItemInterface
     {
         $view = GeneralUtility::makeInstance(StandaloneView::class);
 
-        $extensionKey = getenv('BACKEND_EXT');
+        $extensionKey = env('BACKEND_EXT');
 
         $view->setLayoutRootPaths(['EXT:'.$extensionKey.'/Resources/Private/Layouts']);
         $view->setPartialRootPaths(['EXT:'.$extensionKey.'/Resources/Private/Partials/ToolbarItems']);
