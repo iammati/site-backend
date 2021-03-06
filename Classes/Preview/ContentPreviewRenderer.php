@@ -55,7 +55,7 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
             }
 
             $identifier = 'Backend.ContentElements:'.str_replace('ce_', '', $record['CType']);
-            $header = ll(env('BACKEND_EXT'), $identifier)['title'] ?? $record['header'];
+            $header = ll(env('BACKEND_EXT'), $identifier)['title'] . 'KSMK' ?? $record['header'];
 
             $outHeader = $record['date'] ? htmlspecialchars($itemLabels['date'].' '.BackendUtility::date($record['date'])).'<br />' : '';
             $outHeader .= '<strong>'.$this->linkEditContent($this->renderText($header), $record).$hiddenHeaderNote.'</strong><br />';

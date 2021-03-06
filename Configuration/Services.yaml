@@ -1,9 +1,7 @@
 services:
-  TYPO3\CMS\Core\Configuration\Event\AfterTcaCompilationEvent:
+  Site\Backend\Listener\AfterTcaCompilationListener:
     tags:
       - name: event.listener
         identifier: 'site-backend/tca-compilation-listener'
         method: 'callback'
-        event: Site\Backend\Listener\AfterTcaCompilationListener
-        after: 'after'
-        before: 'before'
+        event: TYPO3\CMS\Core\Configuration\Event\AfterTcaCompilationEvent
