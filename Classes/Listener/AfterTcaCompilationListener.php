@@ -19,6 +19,10 @@ class AfterTcaCompilationListener
 
     public function callback(AfterTcaCompilationEvent $event)
     {
+        if (TYPO3_MODE === 'FE') {
+            return;
+        }
+
         $event->setTca(
             $this->update($event->getTca(), $event->getPosition())
         );
