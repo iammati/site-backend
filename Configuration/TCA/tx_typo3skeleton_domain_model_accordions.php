@@ -1,7 +1,5 @@
 <?php
 
-defined('TYPO3_MODE') || die('Access denied.');
-
 use Site\Core\Form\Fields\Input;
 use Site\Core\Form\Fields\RTE;
 use Site\Core\Service\TCAService;

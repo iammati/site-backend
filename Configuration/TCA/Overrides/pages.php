@@ -1,7 +1,5 @@
 <?php
 
-defined('TYPO3_MODE') || die('Access denied.');
-
 use Site\Core\Form\Fields\File;
 use Site\Core\Form\Fields\Input;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;

@@ -10,6 +10,7 @@ return [
     'Backend' => [
         'Preview' => [
             'enabled' => false,
+            'renderer' => \Site\Backend\Preview\ContentPreviewRenderer::class,
             'extKey' => 'site_backend',
             'templateRootPaths' => 'Resources/Private/Backend/Templates',
         ],

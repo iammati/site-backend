@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-defined('TYPO3_MODE') || die('Access denied.');
-
 use Site\Core\Form\Fields;
 use Site\Core\Helper\ConfigHelper;
 use Site\Core\Service\TCAService;

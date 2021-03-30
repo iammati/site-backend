@@ -8,12 +8,12 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'mati_01@icloud.com',
     'state' => 'stable',
     'clearCacheOnLoad' => 0,
-    'version' => '1.1.0',
+    'version' => '1.1.1',
 
     'constraints' => [
         'depends' => [
             'typo3' => '10.4.0-10.4.99',
-            'site_core' => '1.3',
+            'site_core' => '1.5',
             'container' => '1.2',
         ],
 
