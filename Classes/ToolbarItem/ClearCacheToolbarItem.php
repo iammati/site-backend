@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Backend\ToolbarItem;
+namespace Site\SiteBackend\ToolbarItem;
 
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Toolbar\ClearCacheActionsHookInterface;

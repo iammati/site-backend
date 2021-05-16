@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @var Site\Backend\Service\ContainerService
+ * @var Site\SiteBackend\Service\ContainerService
  *
  * Registers a container-configuration
  */
-$containerService = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Site\Backend\Service\ContainerService::class);
+$containerService = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Site\SiteBackend\Service\ContainerService::class);
 $containerService->register([
     'ctype' => 'container',
     'label' => 'Container',

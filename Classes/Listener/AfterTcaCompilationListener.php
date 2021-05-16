@@ -1,6 +1,6 @@
 <?php
 
-namespace Site\Backend\Listener;
+namespace Site\SiteBackend\Listener;
 
 use Site\Core\Helper\ConfigHelper;
 use Site\Core\Service\TCAService;
@@ -10,6 +10,9 @@ use Symfony\Component\Finder\Finder;
 use TYPO3\CMS\Core\Configuration\Event\AfterTcaCompilationEvent;
 use TYPO3\CMS\Core\Http\Dispatcher;
 
+/**
+ * Fix translated-labels issue after TCA cached and ll() calls are exposed inside the cache base-tca file.
+ */
 class AfterTcaCompilationListener
 {
     /**

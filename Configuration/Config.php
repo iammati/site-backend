@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+use Site\SiteBackend\Preview\ContentPreviewRenderer;
+
 return [
     'localizationType' => 'custom',
 
@@ -10,7 +14,7 @@ return [
     'Backend' => [
         'Preview' => [
             'enabled' => false,
-            'renderer' => \Site\Backend\Preview\ContentPreviewRenderer::class,
+            'renderer' => ContentPreviewRenderer::class,
             'extKey' => 'site_backend',
             'templateRootPaths' => 'Resources/Private/Backend/Templates',
         ],

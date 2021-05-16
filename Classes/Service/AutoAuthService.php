@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Site\Backend\Service;
+namespace Site\SiteBackend\Service;
 
 use TYPO3\CMS\Core\Authentication\AbstractAuthenticationService;
 

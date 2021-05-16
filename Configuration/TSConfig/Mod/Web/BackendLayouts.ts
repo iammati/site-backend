@@ -1,5 +1,4 @@
 mod.web_layout.BackendLayouts {
-    // @import 'EXT:site_backend/Configuration/TSConfig/Mod/Web/Layout/*.ts'
     Content {
         title = Content
         icon = EXT:site_backend/Resources/Public/Images/BackendLayouts/OneColumn.png

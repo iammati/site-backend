@@ -1,5 +1,13 @@
 services:
-  Site\Backend\Listener\AfterTcaCompilationListener:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Site\SiteBackend\:
+    resource: '../Classes/*'
+
+  Site\SiteBackend\Listener\AfterTcaCompilationListener:
     tags:
       - name: event.listener
         identifier: 'site-backend/tca-compilation-listener'

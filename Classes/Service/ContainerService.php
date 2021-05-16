@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Site\Backend\Service;
+namespace Site\SiteBackend\Service;
 
 use B13\Container\Tca\Registry;
+use B13\Container\Tca\ContainerConfiguration;
 use Site\Core\Utility\StrUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -81,7 +82,7 @@ class ContainerService
     ];
 
     /**
-     * @var B13\Container\Tca\Registry
+     * @var Registry
      */
     protected $registry;
 
@@ -110,8 +111,6 @@ class ContainerService
      * @param int    $type
      * @param string $palette the name of the palette to be manipulated
      * @param string $ctype   targeted CType of the container
-     *
-     * @return void
      */
     public function manipulatePaletteByCType($type, $palette, $ctype, $additionalTCA = '')
     {
@@ -146,8 +145,6 @@ class ContainerService
 
     /**
      * Adds additional fields for the TCA fields of the default containers provided by EXT:container.
-     *
-     * @return void
      */
     public function addFields(string $ctype, array $showFields = [], string $targetedPalette = 'container')
     {
@@ -185,8 +182,6 @@ class ContainerService
      * Registers the provided configurations for the EXT:container.
      *
      * @param array $config
-     *
-     * @return void
      */
     public function register($config)
     {
@@ -197,11 +192,10 @@ class ContainerService
         $definitions = $config['definitions'];
         $additionalFields = $config['additionalFields'];
 
-        $containerConfiguration = new \B13\Container\Tca\ContainerConfiguration(
+        $containerConfiguration = new ContainerConfiguration(
             $ctype,
             $label,
             $description,
-
             $definitions
         );
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Site\Backend\Composer;
+namespace Site\SiteBackend\Composer;
 
 use Site\Core\Utility\CurlUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
