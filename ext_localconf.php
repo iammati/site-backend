@@ -8,7 +8,9 @@
     $localconfService->register();
 
     // Example allowed file extensions
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['fileExtensions']['ce_file'] = 'svg';
-    // $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['fileExtensions']['ce_svgs'] = 'svg';
+    // $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['fileExtensions']['field_svgs'] = 'svg';
     // $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['fileExtensions']['svgicon'] = 'svg';
+
+    // Realworld example
+    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['fileExtensions']['field_file'] = 'svg';
 })();

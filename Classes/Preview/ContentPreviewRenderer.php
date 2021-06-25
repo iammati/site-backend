@@ -9,14 +9,12 @@ use Psr\Log\LoggerAwareTrait;
 use Site\Core\Helper\ConfigHelper;
 use Site\Core\Service\BackendUserService;
 use Site\Core\Utility\ExceptionUtility;
-use Site\Core\Utility\StandaloneViewUtility;
 use Site\Frontend\Page\Rendering\CTypeRenderer;
 use TYPO3\CMS\Backend\Preview\PreviewRendererInterface;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
-use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Http\ApplicationType;
 use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Core\Localization\LanguageService;
@@ -47,7 +45,7 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
             $langCode = '';
 
             if (ApplicationType::fromRequest(serverRequest())->isBackend()) {
-                $langCode = GeneralUtility::makeInstance(BackendUserService::class)->getUser()->uc['lang'];
+                $langCode = GeneralUtility::makeInstance(BackendUserService::class)->getUser()->uc['lang'] ?? 'en';
             }
 
             $identifier = 'Backend.ContentElements:' . str_replace('ce_', '', $record['CType']);
@@ -63,17 +61,6 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         $record = $item->getRecord();
-
-        if ('container' == $record['CType']) {
-            return StandaloneViewUtility::render(
-                ConfigHelper::get(env('BACKEND_EXT'), 'Backend.Preview.specialContentRootPaths'),
-                'Container.html',
-                [
-                    'header' => $this->linkEditContent('<b>Container</b>', $record),
-                    'data' => $record,
-                ]
-            );
-        }
 
         return $this->renderContentElementPreviewFromFluidTemplate($record);
     }
@@ -119,6 +106,11 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
         }
 
         $CType = ucfirst(str_replace('ce_', '', $row['CType']));
+        $header = "<p><b>{$CType}</b></p>";
+
+        if (!$row['backendRenderPreview']) {
+            return $header;
+        }
 
         $renderingRootPaths = ConfigHelper::get(env('FRONTEND_EXT'), $rootPathsIdentifier);
 
@@ -129,21 +121,7 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
         $CTypeRendering->cObj->data = $row;
         $CTypeRendering->cObj = $CTypeRendering->renderingEvent($CType, 'beforeRendering');
 
-        return $CTypeRendering->render();
-        $view = GeneralUtility::makeInstance(StandaloneView::class);
-
-        try {
-            $view->setTemplatePathAndFilename($renderingRootPaths);
-        } catch (\Exception $e) {
-            $view->setTemplateSource('<f:be.infobox title="{error.title}" state="2">{error.message}</f:be.infobox>');
-
-            $view->assign('error', [
-                'message' => str_replace(Environment::getProjectPath(), '', $e->getMessage()),
-                'title' => 'Error while rendering FluidTemplate preview using ' . str_replace(Environment::getProjectPath(), '', $fluidTemplateFile),
-            ]);
-        }
-
-        return $view->render();
+        return $header . $CTypeRendering->render();
     }
 
     protected function getProcessedValue(GridColumnItem $item, string $fieldList, array &$info): void
@@ -220,16 +198,25 @@ class ContentPreviewRenderer implements PreviewRendererInterface, LoggerAwareInt
         return $linkText;
     }
 
+    /**
+     * @return BackendUserAuthentication
+     */
     protected function getBackendUser(): BackendUserAuthentication
     {
         return $GLOBALS['BE_USER'];
     }
 
+    /**
+     * @return LanguageService
+     */
     protected function getLanguageService(): LanguageService
     {
         return $GLOBALS['LANG'];
     }
 
+    /**
+     * @return IconFactory
+     */
     protected function getIconFactory(): IconFactory
     {
         return GeneralUtility::makeInstance(IconFactory::class);
