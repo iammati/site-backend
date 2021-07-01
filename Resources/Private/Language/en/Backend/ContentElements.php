@@ -1,11 +1,13 @@
 <?php
 
 return [
+    'tabName' => 'Selecta — Elements',
+
     'rte' => [
         'title' => '[EN] RTE',
     ],
     'accordions' => [
         'title' => 'Accordions',
-        'description' => 'LEEEEL',
+        'description' => 'Example description for accordions',
     ],
 ];
