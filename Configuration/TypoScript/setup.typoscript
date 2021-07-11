@@ -1,0 +1,7 @@
+// Environment
+// @import 'EXT:site_backend/Configuration/TypoScript/Constants/environment.typoscript'
+
+@import 'EXT:site_backend/Configuration/TypoScript/tt_content.rendering.typoscript'
+
+// Additional Libs
+@import 'EXT:site_backend/Configuration/TypoScript/lib.typoscript'

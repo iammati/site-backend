@@ -17,7 +17,7 @@ CREATE TABLE tt_content (
 	containerSpaceAfter varchar(60) DEFAULT '' NOT NULL,
 
     -- Default TCA fields for Content Elements --
-    ce_rte text DEFAULT NULL,
+    fd_rte text DEFAULT NULL,
 
     -- IRRE inline-record items --
     irre_accordions_item int(11) unsigned DEFAULT '0' NOT NULL,
@@ -27,11 +27,14 @@ CREATE TABLE tt_content (
 );
 
 #
-# Table structure for table 'tx_typo3skeleton_domain_model_accordions'
+# Table structure for table 'tx_sitebackend_domain_model_accordions'
 #
-CREATE TABLE tx_typo3skeleton_domain_model_accordions (
+CREATE TABLE tx_sitebackend_domain_model_accordions (
     header varchar(100) DEFAULT '' NOT NULL,
     rte text DEFAULT NULL,
+    file int(11) unsigned DEFAULT '0' NOT NULL,
+    image int(11) unsigned DEFAULT '0' NOT NULL,
+    subaccords int(11) unsigned DEFAULT '0' NOT NULL,
 
     parentid int(11) unsigned DEFAULT '0' NOT NULL,
     parenttable varchar(100) DEFAULT 'tt_content' NOT NULL

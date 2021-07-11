@@ -1,8 +1,7 @@
 <?php
 
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 
-TCAService::showFields(basename(__FILE__, '.php'), '
-    ce_rte,
-    ce_file,
+TcaService::showFields(basename(__FILE__, '.php'), '
+    fd_rte,
 ');

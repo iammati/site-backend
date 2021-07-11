@@ -6,7 +6,7 @@ namespace Site\SiteBackend\Service;
 
 use Site\Core\Service\LocalizationService;
 use Site\Core\Service\RTEService;
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 use Site\SiteBackend\ToolbarItem\ClearCacheToolbarItem;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -51,9 +51,6 @@ class LocalconfService
 
                 // Custom FormEngine-Fields
                 ->nodeRegistration()
-
-                // Frontend Rendering
-                ->ttContentDefaultRendering()
 
                 // AJAX'
                 ->ajaxRegistration()
@@ -131,7 +128,7 @@ class LocalconfService
      */
     protected function iconRegistration(): self
     {
-        TCAService::registerCEIcons(
+        TcaService::registerCEIcons(
             ExtensionManagementUtility::extPath($this->backendExtKey, 'Configuration/TCA/Overrides'),
             $this->backendExtKey
         );
@@ -149,13 +146,6 @@ class LocalconfService
     protected function nodeRegistration(): self
     {
         \Site\Core\Service\FormEngineService::register(
-            'isIrre',
-            40,
-            \Site\SiteBackend\Form\Element\IsIrreElement::class,
-            1610386489
-        );
-
-        \Site\Core\Service\FormEngineService::register(
             'containerRecords',
             40,
             \Site\SiteBackend\Form\Element\ContainerRecordsElement::class,
@@ -165,30 +155,6 @@ class LocalconfService
         return $this;
     }
 
-    /**
-     * @return self
-     */
-    protected function ttContentDefaultRendering(): self
-    {
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(
-            '
-# Content element rendering
-tt_content.default >
-tt_content {
-    key {
-        field = CType
-    }
-
-    default = USER_INT
-    default {
-        userFunc = Site\Frontend\Page\Rendering\CTypeRenderer->render
-    }
-}
-            '
-        );
-
-        return $this;
-    }
 
     /**
      * Example only, thus commented-out.
@@ -219,6 +185,18 @@ tt_content {
             'Site\\SiteBackend\\Domain\\Model',
             'Ttcontent',
             ConfigHelper::get(env('BACKEND_EXT'), 'Fields.Ttcontent') ?? []
+        );
+
+        ModelService::generate(
+            'site_backend',
+            'Site\\SiteBackend\\Domain\\Model',
+            'Accordions',
+            [
+                'string' => [
+                    'title' => "''",
+                    'rte' => "''",
+                ],
+            ]
         );
 
         return $this;

@@ -1,11 +1,9 @@
 <?php
 
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 
 (function () {
-    $customerProject = env('CUSTOMER_PROJECT');
-
-    TCAService::allowTablesStartsWith('tx_'.$customerProject);
+    TcaService::allowTablesStartsWith('tx_'.str_replace('_', '', env('BACKEND_EXT')));
 
     if (TYPO3_MODE === 'BE') {
         // Save and close Button as in previous TYPO3 versions provided

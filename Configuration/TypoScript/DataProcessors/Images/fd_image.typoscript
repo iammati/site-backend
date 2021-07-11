@@ -1,11 +1,11 @@
 dataProcessing.999 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
 dataProcessing.999 {
-    if.isTrue.field = ce_svgs
+    if.isTrue.field = fd_image
 
     references {
-        fieldName = ce_svgs
+        fieldName = fd_image
         table = tt_content
     }
 
-    as = ce_svgs
+    as = fd_image
 }

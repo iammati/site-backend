@@ -17,3 +17,24 @@ if (!function_exists('getCeByCtype')) {
         return ($upperCase ? ucfirst($CType) : lcfirst($CType));
     }
 }
+
+if (!function_exists('resolveContainerByUid')) {
+    /**
+     * @param int|string $uid
+     * @return \B13\Container\Domain\Model\Container|null
+     */
+    function resolveContainerByUid($uid)
+    {
+        $container = null;
+
+        try {
+            $container = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+                B13\Container\Domain\Factory\ContainerFactory::class
+            )->buildContainer((int)$uid);
+        } catch (\Exception $e) {
+            // 
+        }
+
+        return $container;
+    }
+}

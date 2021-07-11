@@ -1,11 +1,11 @@
 <?php
 
-/**
- * @var Site\SiteBackend\Service\ContainerService
- *
- * Registers a container-configuration
- */
+/** @var Site\SiteBackend\Service\ContainerService */
+
+use Site\Core\Service\TcaService;
+
 $containerService = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Site\SiteBackend\Service\ContainerService::class);
+
 $containerService->register([
     'ctype' => 'container',
     'label' => 'Container',
@@ -21,3 +21,7 @@ $containerService->register([
         '--palette--;;containerDefault',
     ],
 ]);
+
+TcaService::showFields(basename(__FILE__, '.php'), '
+    --palette--;;txContainerRecords1Col,
+');

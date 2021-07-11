@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'tabName' => 'Selecta — Elements',
+    'tabName' => ucfirst(env('CUSTOMER_PROJECT')).' — Elements',
 
     'rte' => [
         'title' => '[EN] RTE',

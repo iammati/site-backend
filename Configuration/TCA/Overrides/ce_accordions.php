@@ -1,7 +1,7 @@
 <?php
 
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 
-TCAService::showFields(basename(__FILE__, '.php'), '
+TcaService::showFields(basename(__FILE__, '.php'), '
     irre_accordions_item,
 ');

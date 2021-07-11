@@ -1,5 +1,5 @@
-// if.isTrue.field = ce_accordion_item
-// table = tx_frontend_domain_model_accordions
+// if.isTrue.field = fd_accordion_item
+// table = tx_sitebackend_domain_model_accordions
 
 pidInList.field = pid
 

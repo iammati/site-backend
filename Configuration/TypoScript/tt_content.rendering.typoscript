@@ -1,0 +1,12 @@
+# Content element rendering
+tt_content.default >
+tt_content {
+    key {
+        field = CType
+    }
+
+    default = USER_INT
+    default {
+        userFunc = Site\Frontend\Page\Rendering\CTypeRenderer->render
+    }
+}

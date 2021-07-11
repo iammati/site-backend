@@ -1,6 +1,6 @@
 <?php
 
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 use Site\Core\Form\Fields;
 
 /*
@@ -8,7 +8,7 @@ use Site\Core\Form\Fields;
  *
  * URI Handling
  */
-TCAService::addSiteConfigurationTCA(
+TcaService::addSiteConfigurationTCA(
     // Tab name
     'URI-Handling',
 

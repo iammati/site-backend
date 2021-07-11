@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 // Page-Tree -> Edit a page -> Resources tab -> select an item of the Sidebyside-Select in the Page TSConfig palette
 ExtensionManagementUtility::registerPageTSConfigFile(
     env('BACKEND_EXT'),
-    'Configuration/TSConfig/Main.ts',
+    'Configuration/TSConfig/Main.typoscript',
     'Site - Backend'
 );
 

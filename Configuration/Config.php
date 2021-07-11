@@ -8,7 +8,7 @@ return [
     'localizationType' => 'custom',
 
     'IRREs' => [
-        'prefix' => 'tx_'.env('CUSTOMER_PROJECT').'_',
+        'prefix' => 'tx_'.str_replace('_', '', env('BACKEND_EXT')).'_',
     ],
 
     'Backend' => [

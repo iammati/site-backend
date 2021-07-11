@@ -3,7 +3,7 @@
 namespace Site\SiteBackend\Listener;
 
 use Site\Core\Helper\ConfigHelper;
-use Site\Core\Service\TCAService;
+use Site\Core\Service\TcaService;
 use Site\Core\Utility\FileUtility;
 use Site\Core\Utility\StrUtility;
 use Symfony\Component\Finder\Finder;
@@ -34,7 +34,7 @@ class AfterTcaCompilationListener
     public function update($tca, $position)
     {
         $loadedIRREs = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_core']['TCA_SERVICE']['loadedIRREs'];
-        $contentElements = TCAService::fetchCEs(__DIR__ . '/../../Configuration/TCA/Overrides/', false);
+        $contentElements = TcaService::fetchCEs(__DIR__ . '/../../Configuration/TCA/Overrides/', false);
 
         $name = ConfigHelper::get(env('BACKEND_EXT'), 'IRREs.prefix');
 
