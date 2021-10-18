@@ -7,39 +7,39 @@ use Site\Core\Helper\ConfigHelper;
 use Site\Core\Service\TcaService;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-// Container-Records
-$txContainerRecordsColPosFields = [
-    10, 20, 30, 40
-];
+// Container-Record's multiple column positions (colPos) and prefix
+$txContainerConfig = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['site_backend']['TCA']['txContainerRecordsColPos'];
 
-foreach ($txContainerRecordsColPosFields as $key => $colPos) {
-    unset($txContainerRecordsColPosFields[$key]);
+$txContainerRecordsColPosPositions = $txContainerConfig['positions'];
+$txContainerRecordsColPosPrefix = $txContainerConfig['prefix'];
 
-    $txContainerRecordsColPosFields['tx_container_records_colpos_'.$colPos] = [
-        'label' => 'Column-'.$colPos.' records',
+foreach ($txContainerRecordsColPosPositions as $key => $colPos) {
+    unset($txContainerRecordsColPosPositions[$key]);
+
+    $txContainerRecordsColPosPositions["{$txContainerRecordsColPosPrefix}{$colPos}"] = [
+        'label' => "Column-{$colPos} records",
         'config' => [
             'type' => 'inline',
+
             'foreign_table' => 'tt_content',
             'foreign_field' => 'tx_container_parent',
+
             'foreign_match_fields' => [
-                'colPos' => $colPos
+                'colPos' => $colPos,
             ],
+
             'appearance' => [
                 'showSynchronizationLink' => true,
                 'showAllLocalizationLink' => true,
-                'showPossibleLocalizationRecords' => true
-            ]
-        ]
+                'showPossibleLocalizationRecords' => true,
+            ],
+        ],
     ];
 }
 
 // Default fields of this application for the 'tt_content' table
 ExtensionManagementUtility::addTCAcolumns('tt_content', array_merge([
-    'containerIsFluid' => Fields\Check::make('Container-Fluid', [
-        'config' => [
-            'renderType' => 'checkboxToggle',
-        ],
-    ]),
+    'containerIsFluid' => Fields\Check::make('Container-Fluid'),
 
     'containerSpaceBefore' => Fields\Select::make('Space Before', [
         'config' => [
@@ -60,7 +60,7 @@ ExtensionManagementUtility::addTCAcolumns('tt_content', array_merge([
     'fd_file' => Fields\File::make('File', [
         'fieldName' => 'fd_file',
     ]),
-], $txContainerRecordsColPosFields));
+], $txContainerRecordsColPosPositions));
 
 // Registers automatically all irre_*_item configuration for CTRL-configured IRRE items.
 // Take a look at the method's code to easier understand what it does in detail.

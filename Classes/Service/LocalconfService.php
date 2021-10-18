@@ -13,18 +13,13 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Site\Core\Service\ModelService;
 use Site\Core\Helper\ConfigHelper;
+use Site\Core\Service\FormEngineService;
+use Site\SiteBackend\Form\Element\ContainerRecordsElement;
 
 class LocalconfService
 {
-    /**
-     * @var string
-     */
-    protected $backendExtKey;
-
-    /**
-     * @var LocalizationService
-     */
-    protected $localizationService;
+    protected string $backendExtKey;
+    protected LocalizationService $localizationService;
 
     public function __construct()
     {
@@ -34,14 +29,14 @@ class LocalconfService
     /**
      * The public-accesible of the registration for the backend of this TYPO3 application.
      */
-    public function register()
+    public function register(): void
     {
         $this->backendExtKey = env('BACKEND_EXT');
 
         if ($this->backendExtKey !== false) {
             $this
                 // Automatically authentication on Development Application-/EnvironmentContext
-                ->authBackend()
+                // ->authBackend()
 
                 // YAML registration for the CKEditor (RTE)
                 ->rteRegistration()
@@ -51,9 +46,6 @@ class LocalconfService
 
                 // Custom FormEngine-Fields
                 ->nodeRegistration()
-
-                // AJAX'
-                ->ajaxRegistration()
 
                 // Models
                 ->modelRegistration()
@@ -69,8 +61,6 @@ class LocalconfService
     /**
      * An automated-authentication for the TYPO3 backend.
      * Only affects if the Environment-Context is in development - Staging / Live will never be affected by that.
-     *
-     * @return self
      */
     protected function authBackend(): self
     {
@@ -104,8 +94,6 @@ class LocalconfService
 
     /**
      * Registers the default RTE YAML-configuration file - only in 'BE' mode.
-     *
-     * @return self
      */
     protected function rteRegistration(): self
     {
@@ -123,8 +111,6 @@ class LocalconfService
     /**
      * Registers the Icons for all custom-elements.
      * E.g. an icon-identifier looks like: <company>-backend-ce-accordions.
-     *
-     * @return self
      */
     protected function iconRegistration(): self
     {
@@ -140,44 +126,19 @@ class LocalconfService
      * Registration of the custom FormEngineElement 'IsIrreElement'
      * to know when an IRRE is rendered or not for further handling in
      * the EventRendering of a ContentObjectRenderer.
-     *
-     * @return self
      */
     protected function nodeRegistration(): self
     {
-        \Site\Core\Service\FormEngineService::register(
+        FormEngineService::register(
             'containerRecords',
             40,
-            \Site\SiteBackend\Form\Element\ContainerRecordsElement::class,
+            ContainerRecordsElement::class,
             1612899715
         );
 
         return $this;
     }
 
-
-    /**
-     * Example only, thus commented-out.
-     *
-     * @return self
-     */
-    protected function ajaxRegistration(): self
-    {
-        // GeneralUtility::makeInstance(AjaxService::class)->register(
-        //     'site_frontend',
-        //     [
-        //         'SiteFrontend/RequestPage' => [
-        //             'target' => Ajax\RequestPageAjax::class,
-        //         ],
-        //     ]
-        // );
-
-        return $this;
-    }
-
-    /**
-     * @return self
-     */
     protected function modelRegistration(): self
     {
         ModelService::generate(
@@ -193,7 +154,7 @@ class LocalconfService
             'Accordions',
             [
                 'string' => [
-                    'title' => "''",
+                    'header' => "''",
                     'rte' => "''",
                 ],
             ]

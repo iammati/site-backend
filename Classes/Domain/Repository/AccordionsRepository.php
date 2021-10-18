@@ -6,6 +6,6 @@ namespace Site\SiteBackend\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class TtcontentRepository extends Repository
+class AccordionsRepository extends Repository
 {
 }

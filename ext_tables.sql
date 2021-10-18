@@ -16,6 +16,11 @@ CREATE TABLE tt_content (
     containerSpaceBefore varchar(60) DEFAULT '' NOT NULL,
 	containerSpaceAfter varchar(60) DEFAULT '' NOT NULL,
 
+    tx_container_records_colpos_10 int(11) unsigned DEFAULT '0' NOT NULL,
+    tx_container_records_colpos_20 int(11) unsigned DEFAULT '0' NOT NULL,
+    tx_container_records_colpos_30 int(11) unsigned DEFAULT '0' NOT NULL,
+    tx_container_records_colpos_40 int(11) unsigned DEFAULT '0' NOT NULL,
+
     -- Default TCA fields for Content Elements --
     fd_rte text DEFAULT NULL,
 

@@ -1,10 +1,11 @@
 <?php
 
-/** @var Site\SiteBackend\Service\ContainerService */
-
 use Site\Core\Service\TcaService;
+use Site\SiteBackend\Service\ContainerService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-$containerService = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(Site\SiteBackend\Service\ContainerService::class);
+/** @var ContainerService */
+$containerService = GeneralUtility::makeInstance(ContainerService::class);
 
 $containerService->register([
     'ctype' => 'container-3col',

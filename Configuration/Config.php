@@ -31,5 +31,23 @@ return [
                 ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large', 'extra-large'],
             ],
         ],
+
+        'Ttcontent' => [
+            'string' => [
+                'fdInput' => "''",
+                'fdHeader' => "''",
+                'fdRte' => "''",
+                'fdOpacity' => "''",
+            ],
+
+            '\TYPO3\CMS\Extbase\Domain\Model\FileReference' => [
+                'fdImage' => 'null',
+                'fdFile' => 'null',
+            ],
+
+            '\TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>' => [
+                'fdImages' => 'null',
+            ],
+        ],
     ],
 ];

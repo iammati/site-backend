@@ -7,9 +7,14 @@ services:
   Site\SiteBackend\:
     resource: '../Classes/*'
 
-  Site\SiteBackend\Listener\AfterTcaCompilationListener:
+  Site\SiteBackend\Configuration\Listener\AfterTcaCompilationListener:
     tags:
       - name: event.listener
-        identifier: 'site-backend/tca-compilation-listener'
-        method: 'callback'
+        identifier: 'site-backend/tca-compilation-event'
         event: TYPO3\CMS\Core\Configuration\Event\AfterTcaCompilationEvent
+
+  Site\SiteBackend\Configuration\Listener\AfterCeDefaultTcaRetrievedListener:
+    tags:
+      - name: event.listener
+        identifier: 'site-backend/tca-ce-default-tca-retrieved-event'
+        event: Site\Core\Configuration\Event\AfterCeDefaultTcaRetrievedEvent

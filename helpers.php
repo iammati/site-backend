@@ -32,7 +32,7 @@ if (!function_exists('resolveContainerByUid')) {
                 B13\Container\Domain\Factory\ContainerFactory::class
             )->buildContainer((int)$uid);
         } catch (\Exception $e) {
-            // 
+            //
         }
 
         return $container;
